@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <!-- 
 This README describes the package. If you publish this package to pub.dev,
 this README's contents appear on the landing page for your package.
@@ -41,4 +40,3 @@ from the package authors, and more.
 =======
 # step_tracker
 step tracker is widget of tracking steps like flipkart, amazon, myntra etc. helping to track their current order status.
->>>>>>> 396718170b39de66b4f7599b6c12c0263a6f0b6d
