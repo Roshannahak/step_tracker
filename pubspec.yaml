@@ -1,8 +1,7 @@
 name: step_tracker
-description: A Flutter Step Tracker plugin for collect information from user and display progress through a sequence of steps.
+description: step tracker is widget of tracking steps like flipkart, amazon, myntra etc. helping to track their current order status.
 version: 0.0.1
-git repo: https://github.com/Roshannahak/step_tracker
-roshan nahak (owner): https://github.com/Roshannahak
+homepage: https://github.com/Roshannahak/step_tracker
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
