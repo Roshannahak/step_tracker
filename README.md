@@ -48,14 +48,16 @@ state: TrackerState.none
 state: TrackerState.complete
 state: TrackerState.disable
 ```
+<img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s1.jpg?raw=true" width="200"/>
 
 ##### Types of tracker
 In this widget currently have two types of tracker ```indexedVertical``` ```dotVertical```, default set ```dorVertical```.
 
 ```dart
-stepTrackerType: StepTrackerType.dotVertical
 stepTrackerType: StepTrackerType.indexedVertical
+stepTrackerType: StepTrackerType.dotVertical
 ```
+<img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s2.jpg?raw=true" width="200"/>  <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s3.jpg?raw=true" width="200"/>
 
 #### Feedback
 * Please raise an issue <a href = "https://github.com/Roshannahak/step_tracker/issues">here</a>.
