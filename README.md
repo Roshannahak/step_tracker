@@ -48,7 +48,7 @@ state: TrackerState.none
 state: TrackerState.complete
 state: TrackerState.disable
 ```
-<img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s1.jpg?raw=true" width="200"/>
+<img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s1.jpg?raw=true" width="200"/>  <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s4.jpg?raw=true" width="200"/>
 
 ##### Types of tracker
 In this widget currently have two types of tracker ```indexedVertical``` ```dotVertical```, default set ```dorVertical```.
