@@ -9,6 +9,7 @@ enum TrackerState {
 enum StepTrackerType {
   indexedVertical,
   dotVertical,
+  indexedHorizontal,
 }
 
 class StepTracker extends StatelessWidget {
@@ -17,20 +18,47 @@ class StepTracker extends StatelessWidget {
       required this.steps,
       this.dotSize = 9,
       this.circleSize = 24,
-      this.stepHeight = 25.0,
+      this.pipeSize = 30.0,
       this.selectedColor = Colors.green,
       this.unSelectedColor = Colors.red,
       this.stepTrackerType = StepTrackerType.dotVertical})
       : assert(dotSize <= 20),
-        assert(stepHeight >= 15);
+        assert(pipeSize >= 25);
 
   final List<Steps> steps;
   final double dotSize;
   final double circleSize;
-  final double stepHeight;
+  final double pipeSize;
   final Color selectedColor;
   final Color unSelectedColor;
   final StepTrackerType stepTrackerType;
+
+  Widget _buildIndexedHorizontalHeader(int index) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [_buildCircle(index), SizedBox(height: 5), steps[index].title],
+    );
+  }
+
+  Widget _buildIndexedHorizontal() {
+    return Container(
+      constraints: BoxConstraints(maxHeight: 70),
+      child: ListView.separated(
+          scrollDirection: Axis.horizontal,
+          shrinkWrap: true,
+          itemBuilder: (context, index) => _buildIndexedHorizontalHeader(index),
+          separatorBuilder: (context, index) => Align(
+                alignment: Alignment.topCenter,
+                child: Container(
+                  width: pipeSize,
+                  margin: EdgeInsets.only(top: circleSize / 2.2),
+                  child: Divider(
+                      thickness: 1.5, height: 1, color: _circleColor(index)),
+                ),
+              ),
+          itemCount: steps.length),
+    );
+  }
 
   Widget _buildCircleChild(int index) {
     switch (steps[index].state) {
@@ -83,7 +111,23 @@ class StepTracker extends StatelessWidget {
         children: [
           _buildCircle(index),
           SizedBox(width: 10),
-          steps[index].title
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                steps[index].title,
+                steps[index].description != null
+                    ? Text(
+                        "${steps[index].description}",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                      )
+                    : SizedBox(),
+              ],
+            ),
+          ),
         ],
       );
 
@@ -95,12 +139,14 @@ class StepTracker extends StatelessWidget {
             child: _buildIndexedVerticalHeader(index),
           ),
       separatorBuilder: (context, index) => Align(
-          alignment: Alignment.centerLeft,
-          child: Container(
-              height: stepHeight,
+            alignment: Alignment.centerLeft,
+            child: Container(
+              height: pipeSize,
               margin: EdgeInsets.only(left: circleSize / 2.2),
               child: VerticalDivider(
-                  thickness: 1.5, width: 1, color: _circleColor(index)))),
+                  thickness: 1.5, width: 1, color: _circleColor(index)),
+            ),
+          ),
       itemCount: steps.length);
 
   Widget _buildDot(int index) {
@@ -115,7 +161,27 @@ class StepTracker extends StatelessWidget {
   }
 
   Widget _buildDotVerticalHeader(int index) => Row(
-        children: [_buildDot(index), SizedBox(width: 10), steps[index].title],
+        children: [
+          _buildDot(index),
+          SizedBox(width: 10),
+          Expanded(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                steps[index].title,
+                steps[index].description != null
+                    ? Text(
+                        "${steps[index].description}",
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                      )
+                    : SizedBox(),
+              ],
+            ),
+          )
+        ],
       );
 
   Widget _buildDotVertical() => ListView.separated(
@@ -128,7 +194,7 @@ class StepTracker extends StatelessWidget {
       separatorBuilder: (context, index) => Align(
           alignment: Alignment.centerLeft,
           child: Container(
-              height: stepHeight,
+              height: pipeSize,
               margin: EdgeInsets.only(left: dotSize / 2.2),
               child: VerticalDivider(
                   thickness: 1.5, width: 1, color: _circleColor(index)))),
@@ -141,13 +207,20 @@ class StepTracker extends StatelessWidget {
         return _buildDotVertical();
       case StepTrackerType.indexedVertical:
         return _buildIndexedVertical();
+      case StepTrackerType.indexedHorizontal:
+        return _buildIndexedHorizontal();
     }
   }
 }
 
 class Steps {
-  const Steps({Key? key, required this.title, this.state = TrackerState.none});
+  const Steps(
+      {Key? key,
+      required this.title,
+      this.state = TrackerState.none,
+      this.description});
 
   final Text title;
   final TrackerState state;
+  final String? description;
 }
