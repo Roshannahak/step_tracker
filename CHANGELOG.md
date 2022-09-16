@@ -1,3 +1,4 @@
-## 0.0.3
+## 0.0.4
 
-* This is initial release of step tracker package version 0.0.3
+* added step vertical title description.
+* added step horizontal view.
