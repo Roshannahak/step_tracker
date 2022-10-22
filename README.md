@@ -29,7 +29,9 @@ Simply create a ```step_tracker``` widget, and pass the required params and List
 StepTracker(
   dotSize: 10,
   selectedColor: Colors.green,
+  state: TrackerState.none,
   unSelectedColor: Colors.red,
+  stepTrackerType: StepTrackerType.dotVertical,
   stepHeight: 30,
   steps: [
     Steps(title: Text("your text")),
@@ -41,7 +43,7 @@ StepTracker(
 ```
 
 ##### Change tracker state
-here we have three state on Steps Widget ```complete``` ```disabled``` and one more is set default state ```none```, following attribute is below:
+Here we have three state on Steps Widget ```complete``` ```disabled``` and one more is ```none``` which is default set. Following attributes are below:
 
 ```dart
 state: TrackerState.none
@@ -51,7 +53,7 @@ state: TrackerState.disable
 <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s1.jpg?raw=true" width="200"/>  <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s4.jpg?raw=true" width="200"/>
 
 ##### Types of tracker
-In this widget currently have two types of tracker ```indexedVertical``` ```dotVertical```, default set ```dorVertical```.
+In this widget, currently we have two types of tracker ```indexedVertical``` & ```dotVertical```, default set is ```dotVertical```.
 
 ```dart
 stepTrackerType: StepTrackerType.indexedVertical
