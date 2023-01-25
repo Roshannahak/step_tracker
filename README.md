@@ -29,15 +29,13 @@ Simply create a ```step_tracker``` widget, and pass the required params and List
 StepTracker(
   dotSize: 10,
   selectedColor: Colors.green,
-  state: TrackerState.none,
   unSelectedColor: Colors.red,
   stepTrackerType: StepTrackerType.dotVertical,
-  stepHeight: 30,
+  pipeSize: 30,
   steps: [
-    Steps(title: Text("your text")),
-    Steps(title: Text("your text")),
-    Steps(title: Text("your text")),
-    Steps(title: Text("your text")),
+    Steps(title: Text("your text"), state: TrackerState.none),
+    Steps(title: Text("your text"), state: TrackerState.complete),
+    Steps(title: Text("your text"), state: TrackerState.disabled),
   ],
 )
 ```
@@ -58,6 +56,7 @@ In this widget, currently we have two types of tracker ```indexedVertical``` & `
 ```dart
 stepTrackerType: StepTrackerType.indexedVertical
 stepTrackerType: StepTrackerType.dotVertical
+stepTrackerType: StepTrackerType.indexedHorizontal
 ```
 <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s2.jpg?raw=true" width="200"/>  <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s3.jpg?raw=true" width="200"/>
 
