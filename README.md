@@ -59,7 +59,7 @@ In this widget, currently we have two types of tracker ```indexedVertical``` & `
 stepTrackerType: StepTrackerType.indexedVertical
 stepTrackerType: StepTrackerType.dotVertical
 stepTrackerType: StepTrackerType.indexedHorizontal
-StepTrackerType.dotHorizontal
+stepTrackerType: StepTrackerType.dotHorizontal
 ```
 <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s2.jpg?raw=true" width="200"/>  <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s3.jpg?raw=true" width="200"/> <img src="https://github.com/Roshannahak/step_tracker/blob/dev/screenshots/s5.png?raw=true" width="200"/>
 
@@ -71,11 +71,11 @@ To use the icon stepper with `StepTrackerType.indexedVertical` and `StepTrackerT
 
 ```dart
 StepTracker(
-  type: StepTrackerType.indexedVertical,
+  type: StepTrackerType.indexedVertical, //StepTrackerType.indexedHorizontal
   showIcon: true,
   circleIconSize: 24;
   steps: [
-    Steps(title: "Order Placed", iconAsset: "assets/step1.png"),
+    Steps(title: "Order Placed", description: "description text", iconAsset: "assets/step1.png"),
     Steps(title: "Shipped", iconAsset: "assets/step2.png"),
     Steps(title: "Delivered", iconAsset: "assets/step3.png"),
   ],
