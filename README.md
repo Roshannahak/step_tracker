@@ -61,6 +61,8 @@ stepTrackerType: StepTrackerType.dotVertical
 stepTrackerType: StepTrackerType.indexedHorizontal
 StepTrackerType.dotHorizontal
 ```
+<img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s2.jpg?raw=true" width="200"/>  <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s3.jpg?raw=true" width="200"/> <img src="https://github.com/Roshannahak/step_tracker/blob/dev/screenshots/s5.png?raw=true" width="200"/>
+
 ##### Icon Stepper Guide
 To use the icon stepper with `StepTrackerType.indexedVertical` and `StepTrackerType.indexedHorizontal`:
 
@@ -79,8 +81,7 @@ StepTracker(
   ],
 )
 ```
-
-<img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s2.jpg?raw=true" width="200"/>  <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s3.jpg?raw=true" width="200"/>
+<img src="https://github.com/Roshannahak/step_tracker/blob/dev/screenshots/s6.png?raw=true" width="200"/> <img src="https://github.com/Roshannahak/step_tracker/blob/dev/screenshots/s7.png?raw=true" width="200"/> <img src="https://github.com/Roshannahak/step_tracker/blob/dev/screenshots/s8.png?raw=true" width="200"/>
 
 #### Feedback
 * Please raise an issue <a href = "https://github.com/Roshannahak/step_tracker/issues">here</a>.
