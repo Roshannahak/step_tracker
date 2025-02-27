@@ -1,6 +1,6 @@
 name: step_tracker
 description: A Flutter Step Tracker plugin for collect information from user and display progress through a sequence of steps.
-version: 0.0.5
+version: 1.0.0
 homepage: https://github.com/Roshannahak
 repository: https://github.com/Roshannahak/step_tracker
 
