@@ -28,6 +28,8 @@ Simply create a ```step_tracker``` widget, and pass the required params and List
 ```dart
 StepTracker(
   dotSize: 10,
+  circleIconSize: 24,
+  showIcon: true,
   selectedColor: Colors.green,
   unSelectedColor: Colors.red,
   stepTrackerType: StepTrackerType.dotVertical,
@@ -57,7 +59,27 @@ In this widget, currently we have two types of tracker ```indexedVertical``` & `
 stepTrackerType: StepTrackerType.indexedVertical
 stepTrackerType: StepTrackerType.dotVertical
 stepTrackerType: StepTrackerType.indexedHorizontal
+StepTrackerType.dotHorizontal
 ```
+##### Icon Stepper Guide
+To use the icon stepper with `StepTrackerType.indexedVertical` and `StepTrackerType.indexedHorizontal`:
+
+- Set `showIcon: true`
+- Provide the image URL in the `iconAsset` property of `Steps`
+
+```dart
+StepTracker(
+  type: StepTrackerType.indexedVertical,
+  showIcon: true,
+  circleIconSize: 24;
+  steps: [
+    Steps(title: "Order Placed", iconAsset: "assets/step1.png"),
+    Steps(title: "Shipped", iconAsset: "assets/step2.png"),
+    Steps(title: "Delivered", iconAsset: "assets/step3.png"),
+  ],
+)
+```
+
 <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s2.jpg?raw=true" width="200"/>  <img src="https://github.com/Roshannahak/step_tracker/blob/main/screenshots/s3.jpg?raw=true" width="200"/>
 
 #### Feedback
