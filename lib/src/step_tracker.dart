@@ -10,6 +10,7 @@ enum StepTrackerType {
   indexedVertical,
   dotVertical,
   indexedHorizontal,
+  dotHorizontal
 }
 
 class StepTracker extends StatelessWidget {
@@ -120,7 +121,7 @@ class StepTracker extends StatelessWidget {
           (index + 1).toString(),
           style: TextStyle(
               fontWeight: FontWeight.w600,
-              color: Colors.black.withOpacity(0.8)),
+              color: Colors.black.withValues(alpha: 0.8)),
         );
     }
   }
@@ -133,7 +134,7 @@ class StepTracker extends StatelessWidget {
       case TrackerState.disabled:
         return unSelectedColor;
       case TrackerState.none:
-        return Colors.grey.withOpacity(0.5);
+        return Colors.grey.withValues(alpha: 0.5);
     }
   }
 
@@ -163,9 +164,9 @@ class StepTracker extends StatelessWidget {
                         "${steps[index].description}",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: TextStyle(fontSize: 12, color: Colors.grey),
+                        style: const TextStyle(fontSize: 12, color: Colors.grey),
                       )
-                    : SizedBox(),
+                    : const SizedBox(),
               ],
             ),
           ),
@@ -256,6 +257,72 @@ class StepTracker extends StatelessWidget {
         ),
       );
 
+  Widget _buildDotHorizontal() {
+    return Container(
+      constraints: const BoxConstraints(maxHeight: 70),
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemBuilder: (context, index) => _buildDotHorizontalHeader(index),
+        separatorBuilder: (context, index) => Align(
+          alignment: Alignment.topCenter,
+          child: Container(
+            width: pipeSize,
+            margin: EdgeInsets.only(top: circleIconSize / 6),
+            child: Divider(
+              thickness: 1.5,
+              height: 1,
+              color: _circleColor(index),
+            ),
+          ),
+        ),
+        itemCount: steps.length,
+      ),
+    );
+  }
+
+  Widget _buildDotHorizontalHeader(int index) => Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Row(
+            children: [
+              SizedBox(
+                width: pipeSize * 2,
+                child: index != 0
+                    ? Divider(
+                        thickness: 1.5,
+                        height: 1,
+                        color: _circleColor(index),
+                      )
+                    : null,
+              ),
+              _buildDot(index),
+              SizedBox(
+                width: pipeSize * 2,
+                child: index != steps.length - 1
+                    ? Divider(
+                        thickness: 1.5,
+                        height: 1,
+                        color: _circleColor(index),
+                      )
+                    : null,
+              ),
+            ],
+          ),
+          const SizedBox(height: 5),
+          SizedBox(
+            width: pipeSize * 3,
+            child: Text(
+              steps[index].title,
+              textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+              style: steps[index].titleStyle ?? const TextStyle(fontSize: 14),
+            ),
+          ),
+        ],
+      );
+
   @override
   Widget build(BuildContext context) {
     switch (stepTrackerType) {
@@ -265,6 +332,8 @@ class StepTracker extends StatelessWidget {
         return _buildIndexedVertical();
       case StepTrackerType.indexedHorizontal:
         return _buildIndexedHorizontal();
+      case StepTrackerType.dotHorizontal:
+        return _buildDotHorizontal();
     }
   }
 }
