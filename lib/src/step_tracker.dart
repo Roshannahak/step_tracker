@@ -164,7 +164,8 @@ class StepTracker extends StatelessWidget {
                         "${steps[index].description}",
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontSize: 12, color: Colors.grey),
+                        style:
+                            const TextStyle(fontSize: 12, color: Colors.grey),
                       )
                     : const SizedBox(),
               ],
